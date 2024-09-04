@@ -163,6 +163,25 @@ namespace OGK
         }
     }
 
+    [SRName("Renderer/Set Material")]
+    public class SetMaterialAction : ActionModule
+    {
+        public Renderer rend;
+        public Material material;
+        [Min(0)] public int index = 0;
+        public bool shared = false;
+        public override ActionEvent Invoke() { if (rend != null && material != null) { if (shared == false) { rend.materials[index] = material; } else { rend.sharedMaterials[index] = material; } return ActionEvent.Continue; } else return ActionEvent.Error; }
+    }
+
+    [SRName("Renderer/Set Materials")]
+    public class SetMaterialsAction : ActionModule
+    {
+        public Renderer rend;
+        public List<Material> materials = new List<Material>();
+        public bool shared = false;
+        public override ActionEvent Invoke() { if (rend != null && materials != null) { if (shared == false) { rend.SetMaterials(materials); } else { rend.SetSharedMaterials(materials); }  return ActionEvent.Continue; } else return ActionEvent.Error; }
+    }
+
     [SRName("Renderer/Randomize Material Color")]
     public class RendererRandomizeMaterialAction : ActionModule
     {

@@ -28,7 +28,7 @@ using UnityEngine;
 
 namespace OGK
 {
-    [SRName("Variable Tracker/Compare/Int")]
+    [SRName("Variable Tracker/Compare Variables/Int")]
     public class CompareIntVarAction : ActionModule
     {
         [SerializeField] private VariableTracker tracker;
@@ -41,6 +41,24 @@ namespace OGK
             if (tracker != null)
             {
                 if(LogicOperations.NumericalComparison(tracker.GetInteger(variable1), comparison, tracker.GetInteger(variable2)) == true) { return onTrue; } else { return onFalse; }
+            }
+            else return ActionEvent.Error;
+        }
+    }
+
+    [SRName("Variable Tracker/Compare/Int")]
+    public class CompareIntAction : ActionModule
+    {
+        [SerializeField] private VariableTracker tracker;
+        [SerializeField] private string variable1;
+        [SerializeField] private NumericalComparisons comparison = NumericalComparisons.EqualTo;
+        [SerializeField] private int integer;
+        [SerializeField] private ActionEvent onTrue, onFalse;
+        public override ActionEvent Invoke()
+        {
+            if (tracker != null)
+            {
+                if (LogicOperations.NumericalComparison(tracker.GetInteger(variable1), comparison, integer) == true) { return onTrue; } else { return onFalse; }
             }
             else return ActionEvent.Error;
         }

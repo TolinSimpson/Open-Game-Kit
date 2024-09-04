@@ -130,7 +130,7 @@ namespace OGK
         public override ActionEvent Invoke() { if (transform != null && target != null) { transform.position = Vector3.up * target.position.y; } return ActionEvent.Continue; }
     }
 
-    [SRName("Transform/Set Position & Rotation")]
+    [SRName("Transform/Modify/Position and Rotation")]
     public class SetTransformAction : ActionModule
     {
         public Transform transform;
@@ -139,6 +139,46 @@ namespace OGK
 
         public override ActionEvent Invoke() { if (transform != null) { transform.position = newPosition; transform.rotation = newRotation; } return ActionEvent.Continue; }
     }
+
+    [SRName("Transform/Set Position To Screen Point")]
+    public class SetTransformPosToScreenPointAction : ActionModule
+    {
+        public Transform transform;
+        [Tooltip("Defaults to main camera if unassigned.")] [SerializeField] private Camera camera;
+        [Tooltip("Defaults to world origin if unassigned.")] [SerializeField] private Transform worldPos;
+
+        public override ActionEvent Invoke() 
+        { 
+            if (transform != null) 
+            { 
+                if (worldPos != null) 
+                { 
+                    if(camera != null)
+                    {
+                        camera.WorldToScreenPoint(worldPos.position);
+                    }
+                    else
+                    {
+                        Camera.main.WorldToScreenPoint(worldPos.position);
+                    }
+                } 
+                else 
+                {
+                    if (camera != null)
+                    {
+                        camera.WorldToScreenPoint(Vector3.zero);
+                    }
+                    else
+                    {
+                        Camera.main.WorldToScreenPoint(Vector3.zero);
+                    }
+                } 
+            } 
+            return ActionEvent.Continue; 
+        }
+    }
+
+ 
 
     [SRName("Transform/Spin")]
     public class SpinTransformAction : ActionModule
@@ -152,7 +192,7 @@ namespace OGK
         public override ActionEvent Invoke() { if (transform != null) { transform.Rotate(axis, angle * Time.deltaTime); } return ActionEvent.Continue; }
     }
 
-    [SRName("Transform/Set Position")]
+    [SRName("Transform/Modify/Position")]
     public class SetPositionAction : ActionModule
     {
         public Transform transform;
@@ -161,7 +201,7 @@ namespace OGK
         public override ActionEvent Invoke() { if (transform != null) { transform.position = newPosition; } return ActionEvent.Continue; }
     }
 
-    [SRName("Transform/Set Rotation")]
+    [SRName("Transform/Modify/Rotation")]
     public class SetRotationAction : ActionModule
     {
         public Transform transform;
@@ -170,7 +210,7 @@ namespace OGK
         public override ActionEvent Invoke() { if (transform != null) { transform.rotation = newRotation; } return ActionEvent.Continue; }
     }
 
-    [SRName("Transform/Set Parent")]
+    [SRName("Transform/Modify/Parent")]
     public class SetParentAction : ActionModule
     {
         public Transform transform, parent;

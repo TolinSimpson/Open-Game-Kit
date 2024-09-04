@@ -242,4 +242,12 @@ namespace OGK
            return ActionEvent.Continue;
         }
     }
+
+    [SRName("Audio/Conditions/Is Source Playing?")]
+    public class IsSourcePlayingAction : ActionModule
+    {
+        public AudioSource source;
+        public ActionEvent ifTrue, ifFalse;
+        public override ActionEvent Invoke() { return source.isPlaying ? ifTrue : ifFalse; }
+    }
 }

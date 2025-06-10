@@ -32,7 +32,7 @@ namespace OGK
     public class RigidbodyClearVelocityAction : ActionModule
     {
         public Rigidbody rigid;
-        public override ActionEvent Invoke() { if (rigid != null) { rigid.velocity = Vector3.zero; return ActionEvent.Continue; } else return ActionEvent.Error; }
+        public override ActionEvent Invoke() { if (rigid != null) { rigid.linearVelocity = Vector3.zero; return ActionEvent.Continue; } else return ActionEvent.Error; }
     }
 
     [SRName("Rigidbody/Apply Wind Force")]

@@ -1,0 +1,35 @@
+{
+  "name": "com.tolinsimpson.open-game-kit",
+  "version": "0.1.0",
+  "displayName": "Open Game Kit",
+  "description": "A comprehensive toolkit for Unity game development featuring action sequences, spline systems, variable tracking, UI components, and extensive game development utilities.",
+  "unity": "2022.3",
+  "unityRelease": "0f1",
+  "documentationUrl": "https://github.com/TolinSimpson/Open-Game-Kit#readme",
+  "changelogUrl": "https://github.com/TolinSimpson/Open-Game-Kit/blob/main/CHANGELOG.md",
+  "licensesUrl": "https://github.com/TolinSimpson/Open-Game-Kit/blob/main/LICENSE",
+  "keywords": [
+    "toolkit",
+    "actions",
+    "splines",
+    "variables",
+    "ui",
+    "components",
+    "gamedev",
+    "unity"
+  ],
+  "author": {
+    "name": "Tolin Simpson",
+    "email": "",
+    "url": "https://github.com/TolinSimpson"
+  },
+  "type": "tool",
+  "hideInEditor": false,
+  "samples": [
+    {
+      "displayName": "Example Scenes",
+      "description": "Example scenes demonstrating various Open Game Kit features",
+      "path": "Samples~/ExampleScenes"
+    }
+  ]
+} 
